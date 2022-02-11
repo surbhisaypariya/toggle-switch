@@ -22,3 +22,5 @@ Route::post('changeStatus','App\Http\Controllers\UserController@changeStatus')->
 
 Route::post('delete/{id}','App\Http\Controllers\UserController@destroy')->name('delete_record');
 
+Route::get('/string','App\Http\Controllers\UserController@htmlToString')->name('htmlToString');
+

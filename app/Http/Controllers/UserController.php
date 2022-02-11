@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\HtmlString;
 
 class UserController extends Controller
 {
@@ -55,5 +56,16 @@ class UserController extends Controller
 		User::where("id", $user->id)->delete();
 
 		return back()->with("success", "Image deleted successfully.");
+	}
+
+	public function htmlToString()
+	{
+		$html = "<p>In addition to support for sending email, Laravel provides support for sending notifications across a variety of delivery channels, including email, SMS (via Vonage, formerly known as Nexmo), and Slack. In addition, a variety of community built notification channels have been created to send notification over dozens of different channels! <b>Notifications</b> may also be stored in a database so they may be displayed in your web interface.</p>
+
+		<p>Typically, notifications should be short, informational messages that notify users of something that occurred in your application. For example, if you are writing a billing application, you might send an notification to your users via the email and SMS channels.</p>";
+
+		$string = new HtmlString($html);
+
+		return view('htmlToString',compact('string'));
 	}
 }
