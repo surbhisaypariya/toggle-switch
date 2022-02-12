@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
+		dd($request->session()->get('catalog_id'),$request->session()->get('category_id'));
 		$users = User::all();
 		return view('welcome',compact('users'));
 	}
@@ -67,5 +69,18 @@ class UserController extends Controller
 		$string = new HtmlString($html);
 
 		return view('htmlToString',compact('string'));
+	}
+
+	public function passcatalogid(Request $request)
+	{
+		if($request->catalog_id)
+		{
+			$request->session()->put('catalog_id',$request->catalog_id);	
+		}
+		
+		if($request->category_id)
+		{
+			$request->session()->put('category_id',$request->category_id);
+		}
 	}
 }

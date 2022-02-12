@@ -24,3 +24,8 @@ Route::post('delete/{id}','App\Http\Controllers\UserController@destroy')->name('
 
 Route::get('/string','App\Http\Controllers\UserController@htmlToString')->name('htmlToString');
 
+Route::get('/dropdown',function(){
+	return view('dropdown');
+});
+
+Route::post('/passcatalogid','App\Http\Controllers\UserController@passcatalogid')->name('passcatalogid');
