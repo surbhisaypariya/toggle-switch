@@ -29,3 +29,5 @@ Route::get('/dropdown',function(){
 });
 
 Route::post('/passcatalogid','App\Http\Controllers\UserController@passcatalogid')->name('passcatalogid');
+
+Route::get('/duplicate/{id}','App\Http\Controllers\UserController@duplicate_record')->name('duplicate_record');

@@ -11,7 +11,7 @@ class UserController extends Controller
 {
 	public function index(Request $request)
 	{
-		dd($request->session()->get('catalog_id'),$request->session()->get('category_id'));
+		// dd($request->session()->get('catalog_id'),$request->session()->get('category_id'));
 		$users = User::all();
 		return view('welcome',compact('users'));
 	}
@@ -82,5 +82,13 @@ class UserController extends Controller
 		{
 			$request->session()->put('category_id',$request->category_id);
 		}
+	}
+
+	public function duplicate_record($id)
+	{
+		$user = User::find($id);
+		$new_data = $user->replicate();
+		$new_data->save();
+		dd($new_data);
 	}
 }

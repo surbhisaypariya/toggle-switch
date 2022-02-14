@@ -50,10 +50,13 @@
                             </div>
                         </td>
                         <td>
-                            <form method="post" action="{{ route('delete_record',[$user->id] )}}">
-                                @csrf
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form>
+                            <div class="btn-group">
+                                <form method="post" action="{{ route('delete_record',[$user->id] )}}">
+                                    @csrf
+                                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                </form>
+                                <a href="{{ route('duplicate_record',[$user->id]) }}" class="btn btn-primary">Duplicate</a>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
